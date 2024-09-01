@@ -63,6 +63,13 @@ export async function GET(request: Request){
             status: 200
         })
     } catch (error) {
+        console.error("Something went wrong while retreiving messages", error);
         
+        return Response.json({
+            success: false,
+            message: "Internal server error"
+        }, {
+            status: 500
+        })
     }
 }
