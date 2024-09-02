@@ -63,6 +63,8 @@ const Page = () => {
     setIsSubmitting(true)
 
     try {
+      data.email = data.email.toLowerCase();
+      data.username = data.username.toLowerCase();
       const res = await axios.post<ApiResponse>('/api/sign-up', data)
       toast({
         title: "Success",
