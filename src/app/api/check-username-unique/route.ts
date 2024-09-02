@@ -47,7 +47,7 @@ export async function GET(request: Request){
         if(existingVerifiedUser){
             return Response.json({
                 success: false,
-                message: "username is already taken"
+                message: "Username is already taken"
             }, {
                 status: 400
             })
@@ -55,7 +55,7 @@ export async function GET(request: Request){
 
         return Response.json({
             success: true,
-            message: "username is available"
+            message: "Username is available"
         }, {
             status: 200
         })
