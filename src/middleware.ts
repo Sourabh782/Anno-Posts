@@ -16,6 +16,8 @@ export async function middleware(request: NextRequest) {
             url.pathname.startsWith('/verify') ||
             url.pathname.startsWith('/')
         )
+        && 
+        !url.pathname.startsWith("/dashboard")
     ){
         return NextResponse.redirect(new URL('/dashboard', request.url))
     }

@@ -1,7 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import {z} from "zod";
 import UserModel from "@/model/User.model";
-import { usernameValidation } from "@/schemas/signupSchema";
 
 export async function POST(request:Request){
     await dbConnect();
