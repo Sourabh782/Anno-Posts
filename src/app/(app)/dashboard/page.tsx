@@ -13,6 +13,7 @@ import axios, { AxiosError } from "axios";
 import { Loader2, RefreshCcw } from "lucide-react";
 import { User } from "next-auth";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form";
 
@@ -21,6 +22,8 @@ const page = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSwitchLoading, setIsSwitchLoading] = useState(false);
+
+  const router = useRouter()
 
   const { toast } = useToast();
 
@@ -121,9 +124,8 @@ const page = () => {
   }
   
   if(!session || !session.user){
-    return <div>
-      Please Login
-    </div>
+    router.replace(`/`)
+    return <></>
   }
 
   const {username} = session?.user as User
