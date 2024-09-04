@@ -22,7 +22,7 @@ const page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSwitchLoading, setIsSwitchLoading] = useState(false);
 
-  const {toast} = useToast();
+  const { toast } = useToast();
 
   const handleDeleteMessage = (messageId: string) => {
     setMessages(messages.filter((message)=> message._id !== messageId))
@@ -119,6 +119,12 @@ const page = () => {
       })
     }
   }
+  
+  if(!session || !session.user){
+    return <div>
+      Please Login
+    </div>
+  }
 
   const {username} = session?.user as User
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
@@ -126,17 +132,11 @@ const page = () => {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(profileUrl);
-
+    console.log("hii")
     toast({
       title: "URL copied",
       description: "Profile URL has been copied to clipboard"
     })
-  }
-
-  if(!session || !session.user){
-    return <div>
-      Please Login
-    </div>
   }
 
   return (
